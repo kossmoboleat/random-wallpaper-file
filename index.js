@@ -10,18 +10,18 @@ function randomIndex(length) {
 function getRandomImages(imageDir, numberOfFiles) {
   //Read the directory and get the files
   const dirs = fs.readdirSync(imageDir)
-    .filter(fileName =>
-        fileName.toLowerCase().endsWith("png") ||
-        fileName.toLowerCase().endsWith("jpg")||
-        fileName.toLowerCase().endsWith("jpeg"))
-    .map(file => path.join(imageDir, file));
+  .filter(fileName =>
+      fileName.toLowerCase().endsWith("png") ||
+      fileName.toLowerCase().endsWith("jpg") ||
+      fileName.toLowerCase().endsWith("jpeg"))
+  .map(file => path.join(imageDir, file));
 
   const chosenImages = [];
   const hashCheck = {}; //used to check if the file was already added to chosenImages
 
   //While we haven't got the number of files we want. Loop.
   while (chosenImages.length < numberOfFiles) {
-    const fileIndex = randomIndex(dirs.length-1);
+    const fileIndex = randomIndex(dirs.length - 1);
 
     //Check if the file was already added to the array
     if (hashCheck[fileIndex] === true) {
@@ -38,7 +38,7 @@ function getRandomImages(imageDir, numberOfFiles) {
 
 const main = async () => {
   const imageDir = process.argv[2];
-  if(!imageDir) {
+  if (!imageDir) {
     console.error('Please specify image directory as argument!');
     return;
   }
@@ -51,11 +51,12 @@ const main = async () => {
     const screenIndex = randomImages.indexOf(filePath);
     console.log(screenIndex, filePath);
     await wallpaper.set(filePath, {screen: screenIndex});
-    }
+  }
 };
 
 main()
-.then(() => {})
+.then(() => {
+})
 .catch((e) => {
   console.error('main()', e);
 });
