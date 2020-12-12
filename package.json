@@ -1,0 +1,11 @@
+{
+  "name": "random-wallpaper-file",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "Tim Forest",
+  "license": "ISC",
+  "dependencies": {
+    "wallpaper": "^4.4.2"
+  }
+}
